@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulário de Solicitação de Cópias</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    
+    <!--JQUERY-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+  </head>
+  <body>
+    <!--LOGO CREMERJ-->
+    <div class="container-sm responsive">
+      <img src="images/logo-crm.jpg" width="100%" height="100%">
+      </div>
+    <h1 class="text-center">Formulário de Solicitação de Cópias - Setor PEP</h1>
+    <br>
+    <div class="container">
+      <form action="/" method="post">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Nome</span>
+          <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" id="nome" aria-describedby="basic-addon1">
+          </div>
+  
+          <div class="row">
+              <div class="col-auto">
+                  <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">CRM</span>
+                  <input type="text" class="form-control"  aria-label="CRM" id="crm" aria-describedby="basic-addon1">
+                  </div>
+              </div>
+  
+              <div class="col-auto">
+                  
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">OAB</span>
+                      <input type="text" class="form-control"  aria-label="OAB" id="oab" aria-describedby="basic-addon1">
+                      </div>
+              </div>
+  
+              <div class="col-auto">
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">RG</span>
+                      <input type="text" class="form-control"  aria-label="RG" id="rg" aria-describedby="basic-addon1">
+                      </div>
+              </div>
+  
+              <div class="col-auto">
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">CPF</span>
+                      <input type="text" class="form-control"  aria-label="CPF" id="cpf" aria-describedby="basic-addon1">
+                  </div>
+              </div>
+  
+          </div>
+  
+          <div class="row">
+              <div class="col-auto">
+                  <h4>Interessado</h4>
+              </div>
+              
+                  <div class="col-auto">
+                      <select class="form-select" id="select_interessado" aria-label="Default select example">
+                          <option value="Denunciante">Denunciante</option>
+                          <option value="Denunciado">Denunciado</option>
+                          <option value="Advogado do Denunciante">Advogado do Denunciante</option>
+                          <option value="Advogado do Denunciado">Advogado do Denunciado</option>
+                          <option value="Estagiário">Estagiário</option>
+                      </select>
+                  </div>
+              
+                  <div class="col-auto">
+                      <h4>Procedimento:</h4>
+                  </div>
+                      
+                  <div class="col-auto">
+                      <div class="input-group mb-3">
+                          <select class="form-select" id="select_menu" aria-label="Default select example">
+                                  <option value="Protocolo">Protocolo</option>
+                                  <option value="Sindicância">Sindicância</option>
+                                  <option value="PEP">PEP</option>
+                                  <option value="PA">PA</option>
+                                  <option value="Carta Precatória">Carta Precatória</option>
+                          </select>
+                          <input type="text" class="form-control" id="procedimento" aria-label="Text input with dropdown button">
+                          </div>
+                  </div>
+          </div>
+          
+         <div ng-app="">
+          <div class="row">
+              <div class="col-auto">
+                  <h4>Finalidade:</h4>
+              </div>
+              <div class="col-auto" id="div_valor">
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="group_radio"  id="vista" value="Vista">
+                      <label class="form-check-label" for="inlineRadio1">Vista</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="group_radio" id="copia_digital" value="Cópia Digital">
+                      <label class="form-check-label" for="inlineRadio2">Cópia Digital</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" checked name="group_radio" id="copia_impressa" value="Cópia Impressa">
+                      <label class="form-check-label" for="inlineRadio3">Cópia Impressa</label>
+                    </div>
+  
+                    
+                    
+                    
+              </div>
+              <!--RECEBE O INPUT PARA ENTRADA DO VALOR DA CÓPIA IMPRESSA-->
+                  <div class="row" id="valor_copia">
+                    <div class="col-auto" >
+                      <h4> Valor: R$ </h4>
+                  </div>
+                  <div class="col-auto">
+                    <input type="text" readonly id="valorCopia" class="form-control" ></input>
+                  </div>
+                  </div>
+             </div>
+             <br>
+  
+             <div class="row">
+               <div class="col-auto">
+                  <h4>Solicita Cópias: </h4>
+               </div>
+               <div class="col-auto">
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="copia_radio"  id="integral" value="Integral">
+                      <label class="form-check-label" for="inlineRadio1">Integral</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="copia_radio" id="parcial" value="Parcial">
+                      <label class="form-check-label" for="inlineRadio2">Parcial</label>
+                    </div>
+               </div>
+               <div class="col-auto">
+                  <div class="input-group mb-3">
+                      <input type="number" class="form-control" onkeypress="soma()" disabled ng-model="fl_inicial" name="fl_inicial" id="fl_inicial" placeholder="Folha Inicial" aria-label="Inicial">
+                      <span class="input-group-text">Até</span>
+                      <input type="number" class="form-control" onkeypress="soma()"  disabled ng-model="fl_final" name="fl_final" id="fl_final" placeholder="Folha Final" aria-label="Final">
+                    </div>
+               </div>
+             </div>
+         </div>
+  
+         <div class="row">
+          <div class="col-auto">
+              <button type="submit" id="btn" class="btn btn-success">Salvar</button>
+          </div>
+  
+          <div class="col-auto">
+              <button type="reset" class="btn btn-danger">Limpar</button>
+          </div>
+         </div>
+      </form>
+    </div>
+
+    <script>
+
+      function soma(){
+        var valor1 = $("#fl_inicial").val();
+        var valor2 = $("#fl_final").val();
+        var total = (valor2 - valor1 +1) * 0.40;
+        console.log(total);
+        $("#valorCopia").val(total.toFixed(2));
+
+      }
+
+      $("#vista").click(function(){
+        $("#valor_copia").hide();
+      }); 
+      $("#copia_digital").click(function(){
+        $("#valor_copia").hide();
+      });
+
+        //CÓPIA IMPRESSA
+      $("#copia_impressa").click(function(){
+                
+          $("#valor_copia").show();
+      });
+
+      $("#integral").click(function(){
+        $("#fl_inicial").prop("disabled", false);
+        $("#fl_final").prop("disabled", false);
+        
+      });
+
+      $("#parcial").click(function(){
+        $("#fl_inicial").prop("disabled", false);
+        $("#fl_final").prop("disabled", false);
+      });
+
+       //MÁSCARA PARA CPF
+       var options = {
+        onKeyPress: function (cpf, ev, el, op) {
+            var masks = ['000.000.000-000', '00.000.000/0000-00'];
+            $('#cpf').mask((cpf.length > 14) ? masks[1] : masks[0], op);
+        }
+        
+      }
+
+      $('#cpf').length > 12 ? $('#cpf').mask('00.000.000/0000-00', options) : $('#cpf').mask('000.000.000-00', options);
+
+      //MÁSCARA PARA OAB
+      var options = {
+        onKeyPress: function (oab, ev, el, op) {
+            var masks = ['00.000', '000.000'];
+            $('#oab').mask((oab.length > 5) ? masks[1] : masks[0], op);
+        }
+        
+      }
+
+      $('#oab').length > 6 ? $('#oab').mask('000.000', options) : $('#oab').mask('00.000', options);
+
+
+      //PASSANDO OS VALORES PARA A PÁGINA 2
+      var btn = document.querySelector("#btn");
+
+      btn.addEventListener('click', function(){
+        var nome = $("#nome").val();
+        console.log("Nome completo: "+nome);
+        var crm = $("#crm").val();
+        console.log(" CRM: "+ crm); 
+        var oab = $("#oab").val();
+        console.log(" oab: "+ oab);
+        var rg = $("#rg").val();
+        console.log(" RG: "+ rg);
+        var cpf = $("#cpf").val();
+        console.log(" CPF: "+ cpf);
+        var interessado = $("#select_interessado").val();
+        console.log("Interessado: "+ interessado);
+        var procedimento = $("#select_menu").val();
+        console.log("Procedimento: "+ procedimento);
+        var num_procedimento = $("#procedimento").val();
+        console.log("Número: "+ num_procedimento);
+        
+        var finalidade = $('input[name=group_radio]:checked').closest("div").find("label").text();
+        console.log("Finalidade: "+ finalidade);
+
+        var valorcopia = $("#valorCopia").val();
+        console.log("Valor R$: "+ valorcopia);
+
+
+        var tipo_copia = $('input[name=copia_radio]:checked').closest("div").find("label").text();
+        console.log("Finalidade: "+ tipo_copia);
+        
+
+        var fl_inicial = $("#fl_inicial").val();
+        var fl_final = $("#fl_final").val();
+        
+        
+        window.location.href = "formulario.html?nome=" +nome+"&crm="+crm+"&oab="+oab+"&rg="+rg+"&cpf="+cpf+"&interessado="+interessado+"&procedimento="+procedimento+"&numprocesso="+num_procedimento+"&finalidade="+finalidade+"&valorcopia="+valorcopia+"&tipo_copia="+tipo_copia+"&folhainicial="+fl_inicial+"&folhafinal="+fl_final;
+
+    });
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" ></script>
+  </body>
+</html>
