@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulário de Solicitação de Cópias - Setor PEP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <!--JQUERY-->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+  </head>
+  <body>
+    <!--LOGO CREMERJ-->
+    <div class="container-sm responsive">
+        <img src="images/logo-crm.jpg" width="100%" height="100%">
+      </div>
+    <h1 class="text-center" style="font-size: x-large; color: cornflowerblue;"><strong>Registro de Acesso ao Autos/ Solicitação de Cópias</strong></h1>
+    <br>
+    <div class="container-sm">
+        <div class="row">
+            <div class="col-auto">
+                <span  style="text-transform: uppercase;"><strong>NOME: </strong><span id="nome"></span></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+                <span><strong>CRM: </strong> <span  id="crm"></span></span>
+            </div>
+            <div class="col-2">
+                <span ><strong>OAB: </strong><span id="oab"></span></span>
+            </div>
+            <div class="col-auto">
+                <span ><strong>RG: </strong><span id="rg"></span></span>
+            </div>
+            <div class="col-4">
+                <span ><strong>CPF: </strong><span id="cpf"></span></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-auto"><span><strong>INTERESSADO:</strong></span></div>
+            <div class="col-auto">
+                <div id="interessado" style="text-transform: uppercase;">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-auto">
+                <span><strong>PROCEDIMENTO: </strong></span>
+            </div>
+            <div class="col-auto" id="procedimento">
+
+            </div>
+            Nº
+            <div class="col-auto" id="numprocesso">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-auto">
+                <span><strong>FINALIDADE: </strong></span>
+            </div>
+            <div class="col-auto">
+                <span id="finalidade"></span>
+            </div>
+            -
+            <div class="col-auto">
+                <span id="valor"><strong></strong></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-auto">
+                <span><strong>SOLICITA CÓPIA: </strong></span>
+            </div>
+            <div class="col-auto">
+                <span id="solicita_copia"> </span> - 
+            </div>
+            <div class="col-auto">
+                <span>Fls: </span><span id="fl_inicial"></span> / <span id="fl_final"></span>
+            </div>
+        </div>
+<br>
+        <div class="row">
+            <div>
+                Declaro estar ciente de que os autos tramitam em sigilo processual e comprometo-me, sob as penas da lei, a não divulgar ou dar publicidade
+                às referidas peças, responsabilizando-me pelo mau uso, caso outro fim seja dado.
+                Declaro, por fim, estar ciente de que as cópias não retiradas no prazo de <strong>30 (trinta) dias</strong> serão descartadas.
+            </div>
+        </div>
+        <br>
+        <div class="row" id="data">
+            <!--RECEBE A DATA ATUAL-->
+
+        </div>
+        
+        <div class="row" style="margin-top: 70px;">
+            <span class="text-center">__________________________________________________________</span>
+            <span class="text-center">Assinatura</span>
+        </div>
+
+            <!--DIV RECIBO-->
+            <div class="row wrapper"  style="background-color: darkgray; margin-top: 20px;">
+                <span class="text-center" style="color:blue;"><strong>RECIBO</strong></span>
+                <div class="text-center">
+                    Recebi do Conselho Regional de Medicina do Estado do Rio de Janeiro, a(s) cópia(s) acima solicitada(s) dos autos em epígrafe.
+                </div>
+                <div class="row" id="data2" style="margin-top: 30px;">
+                    <!--RECEBE A DATA ATUAL-->
+        
+                </div>
+                <div class="row" style="margin-top: 50px;">
+                    <span class="text-center">__________________________________________________________</span>
+                    <span class="text-center">Assinatura</span>
+                </div>
+            </div>
+            <div class="container-sm responsive" >
+                <img src="images/rodape.jpg" width="100%" height="100%">
+              </div>
+    </div>
+
+<style>
+    .wrapper {
+    max-width: 550px;
+    min-height: 70px;
+    margin: 50px auto;
+    padding: 40px 30px 30px 30px;
+    background-color: darkgray;
+    border-radius: 10px;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff
+}
+</style>
+    <script>
+        const month = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+        var d = new Date();
+        let mes = month[d.getMonth()];
+        var data_atual = d.getDate() + " de " + mes + " de " + d.getFullYear();
+        $("#data").html(`<span class='text-center'>Rio de Janeiro, ${data_atual}</span>`);
+        $("#data2").html(`<span class='text-center'>Rio de Janeiro, ${data_atual}</span>`);
+        console.log(data_atual);
+
+    
+    function mostra_dados(){
+        var nome = new URLSearchParams(window.location.search).get("nome");
+        console.log(nome);
+        var crm = new URLSearchParams(window.location.search).get("crm");
+        var oab = new URLSearchParams(window.location.search).get("oab");
+        var rg = new URLSearchParams(window.location.search).get("rg");
+        var cpf = new URLSearchParams(window.location.search).get("cpf");
+        var interessado = new URLSearchParams(window.location.search).get("interessado");
+        var procedimento = new URLSearchParams(window.location.search).get("procedimento");
+        var numprocesso = new URLSearchParams(window.location.search).get("numprocesso");
+        var finalidade = new URLSearchParams(window.location.search).get("finalidade");
+        var valorcopia = new URLSearchParams(window.location.search).get("valorcopia");
+        console.log(valorcopia);
+        var tipo_copia = new URLSearchParams(window.location.search).get("tipo_copia");
+        var parcial = new URLSearchParams(window.location.search).get("parcial");
+        var folhainicial = new URLSearchParams(window.location.search).get("folhainicial");
+        var folhafinal = new URLSearchParams(window.location.search).get("folhafinal");
+
+        $("#nome").html(nome);
+        $("#crm").html(crm);
+        $("#oab").html(oab);
+        $("#rg").html(rg);
+        $("#cpf").html(cpf);
+        $("#interessado").html(interessado);
+        $("#procedimento").html(procedimento);
+        $("#numprocesso").html(numprocesso);
+        $("#finalidade").html(finalidade);
+        $("#valor").html("Valor a ser pago: <strong>R$ "+valorcopia+ "</strong>");
+        $("#solicita_copia").html(tipo_copia);
+        
+        $("#fl_inicial").html(folhainicial);
+        $("#fl_final").html(folhafinal);
+        
+
+    }
+
+    mostra_dados();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" ></script>
+  </body>
+</html>
