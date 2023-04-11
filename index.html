@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Formulário de Solicitação de Cópias</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     
     <!--JQUERY-->
@@ -143,6 +144,7 @@
                       <input type="number" class="form-control" onkeypress="soma()" disabled ng-model="fl_inicial" name="fl_inicial" id="fl_inicial" placeholder="Folha Inicial" aria-label="Inicial">
                       <span class="input-group-text">Até</span>
                       <input type="number" class="form-control" onkeypress="soma()"  disabled ng-model="fl_final" name="fl_final" id="fl_final" placeholder="Folha Final" aria-label="Final">
+                      <button class="btn btn-success" title="Calcular Valor" onclick="soma()" onkeypress="soma()" type="submit" disabled id="btn_calculadora"><i class="bi bi-calculator"></i> Calcular Valor</button>
                     </div>
                </div>
              </div>
@@ -186,12 +188,14 @@
       $("#integral").click(function(){
         $("#fl_inicial").prop("disabled", false);
         $("#fl_final").prop("disabled", false);
+        $("#btn_calculadora").prop("disabled", false);
         
       });
 
       $("#parcial").click(function(){
         $("#fl_inicial").prop("disabled", false);
         $("#fl_final").prop("disabled", false);
+        $("#btn_calculadora").prop("disabled", false);
       });
 
        //MÁSCARA PARA CPF
