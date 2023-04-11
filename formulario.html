@@ -67,7 +67,7 @@
             <div class="col-auto">
                 <span id="finalidade"></span>
             </div>
-            -
+            
             <div class="col-auto">
                 <span id="valor"><strong></strong></span>
             </div>
@@ -78,7 +78,10 @@
                 <span><strong>SOLICITA CÓPIA: </strong></span>
             </div>
             <div class="col-auto">
-                <span id="solicita_copia"> </span> - 
+                <span id="solicita_copia"> </span>  
+            </div>
+            <div class="col-auto">
+                <span>-</span>
             </div>
             <div class="col-auto">
                 <span>Fls: </span><span id="fl_inicial"></span> / <span id="fl_final"></span>
@@ -170,8 +173,12 @@
         $("#interessado").html(interessado);
         $("#procedimento").html(procedimento);
         $("#numprocesso").html(numprocesso);
-        $("#finalidade").html(finalidade);
-        $("#valor").html("Valor a ser pago: <strong>R$ "+valorcopia+ "</strong>");
+        if(finalidade == "Cópia Impressa"){
+            $("#finalidade").html(finalidade);
+            $("#valor").html("<span>-</span> Valor a ser pago: <strong>R$ "+valorcopia+ "</strong>");
+        }else{
+            $("#finalidade").html(finalidade);
+        }
         $("#solicita_copia").html(tipo_copia);
         
         $("#fl_inicial").html(folhainicial);
